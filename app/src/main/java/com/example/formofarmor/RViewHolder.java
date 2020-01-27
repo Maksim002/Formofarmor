@@ -40,7 +40,7 @@ class RViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
-                    model.setName(password.getText().toString());
+                    model.setFriendsCount(password.getText().toString());
                 }
             }
         });
