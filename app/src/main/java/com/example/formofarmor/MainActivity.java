@@ -3,22 +3,21 @@ package com.example.formofarmor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private Button button;
     ArrayList<PersonModel> list = new ArrayList<>();
+    private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +27,15 @@ public class MainActivity extends AppCompatActivity{
         button = findViewById(R.id.bottomAdd);
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(adapter = new Adapter());
+        recyclerView.setAdapter(adapter = new Adapter(list,window));
+        recyclerView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adapter.setItemList(getList(adapter.getItemList()));
-
-            }
-        });
+        button.setOnClickListener(v ->
+                adapter.setRetData(getList(adapter.getRetData())));
     }
 
-    ArrayList<PersonModel> getList(ArrayList<PersonModel> aaa ) {
-        aaa.add(new PersonModel(1,"",""));
+    public ArrayList<PersonModel> getList(ArrayList<PersonModel> list) {
+        list.add(new PersonModel(1, "", ""));
         return list;
     }
 }
