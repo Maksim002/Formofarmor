@@ -3,10 +3,13 @@ package com.example.formofarmor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroupOverlay;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -37,5 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<PersonModel> getList(ArrayList<PersonModel> list) {
         list.add(new PersonModel(1, "", ""));
         return list;
+//        fefehbhfefejfgfefe
     }
+
 }
